@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name = "format-detection" content = "telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <link rel="stylesheet" type="text/css" href="assets/vendor/jquery.mobile/style.css" />
+        <link rel="stylesheet" type="text/css" href="assets/vendor/h5bp/style.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+        <script data-main="app/config" src="assets/js/libs/require.js"></script>
+        <title>SayIt</title>
+    </head>
+    <body>
+    <div id="container"></div>
+    
+
+     <script type="text/template" id="card_template">
+       <h1><%= card.get("name") %></h1>
+       <ul>
+        <% for(var i=0; i < card.get("restricted_words").length;i++){ %>
+         <li><%= card.get("restricted_words")[i] %></li>
+        <% } %>
+       </ul>
+     </script>
+    </body>
+</html>
