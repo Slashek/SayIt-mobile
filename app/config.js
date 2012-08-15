@@ -1,25 +1,29 @@
+// Set the require.js configuration for your application.
 require.config({
+  // Initialize the application with the main application file
+  deps: ["main"],
 
-deps: ["main"],
+  paths: {
+    // JavaScript folders
+    libs: "../assets/js/libs",
+    plugins: "../assets/js/plugins",
 
-paths: {
+    // Libraries
+    jquery: "../assets/js/libs/jquery",
+    lodash: "../assets/js/libs/lodash",
+    backbone: "../assets/js/libs/backbone"
+  },
 
-libs: "../assets/js/libs",
-plugins: "../assets/js/plugins",
-vendor: "../assets/js/vendor",
-configs: "configs",
-// Libraries
-jquery: '../assets/js/libs/jquery',
-lodash: '../assets/js/libs/lodash',
-backbone: '../assets/js/libs/backbone'
-},
-shim: {
-backbone: {
-deps: ["lodash", "jquery"],
-exports: "Backbone"
-},
-'configs/jquery.mobile-config': ['jquery'],
-  'plugins/jquery.mobile': ['jquery','configs/jquery.mobile-config'],
-  'plugins/backbone.layoutmanager': ['backbone']
+  shim: {
+    backbone: {
+      deps: ["lodash", "jquery"],
+      exports: "Backbone"
+    },
+
+    // Backbone.layoutmanager depends on Backbone.
+    "plugins/backbone.layoutmanager": ["backbone"],
+
+    // Backbone.localstorage depends on Backbone.
+    "plugins/backbone-localstorage": ["backbone"]
   }
 });
