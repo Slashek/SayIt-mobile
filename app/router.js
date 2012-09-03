@@ -3,12 +3,13 @@ define([
   "app",
 
   // Modules.
+  "modules/game",
   "modules/todo",
   "modules/card",
   "modules/team"
 ],
 
-function(app, Todo, Card, Team) {
+function(app, Game, Todo, Card, Team) {
   // An example Backbone application contributed by
   // [Jérôme Gravel-Niquet](http://jgn.me/). This demo uses a simple
   // [LocalStorage adapter](backbone-localstorage.js)
@@ -20,7 +21,13 @@ function(app, Todo, Card, Team) {
     },
 
     index: function() {
-      app.useLayout("menu").setViews({ });
+      
+      app.useLayout("main").setViews({
+        // Attach the root content View to the layout.
+        ".app-body": new Game.Views.MainMenu({
+          //collection: list
+        })
+      }).render();
 /*      // Create a new Todo List.
       var list = new Todo.List();
 
