@@ -57,22 +57,36 @@ body {
 	line-height: 1;
 }
 
-#create-todo {
-	position: relative;
+.left{
+ float: left;
 }
-#create-todo input {
-	width: 466px;
-	font-size: 24px;
+
+.right{
+ float: right;
+}
+
+.options p{
+ overflow: hidden;
+ margin: 5px;
+}
+.options label{
+ padding-top: 5px;
+ float: left;
+ margin-right: 5px;
+ width: 120px;
+}
+.options input {
 	font-family: inherit;
-	line-height: 1.4em;
-	border: 0;
-	outline: none;
 	padding: 6px;
 	border: 1px solid #999999;
 	-moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 	-o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 	box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+}
+
+.options .buttons{
+  overflow: hidden;
 }
 
 #create-todo span {

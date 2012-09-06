@@ -15,43 +15,48 @@ function(app, Game, Todo, Card, Team) {
   // [LocalStorage adapter](backbone-localstorage.js)
   // to persist Backbone models within your browser.
   // Defining the application router, you can attach sub routers here.
+
   var Router = Backbone.Router.extend({
+
     routes: {
-      "": "index"
+      "": "index",
+      "game/settings": "settings",
+      "game/play": "play"
     },
 
     index: function() {
-      
       app.useLayout("main").setViews({
         // Attach the root content View to the layout.
         ".app-body": new Game.Views.MainMenu({
           //collection: list
         })
       }).render();
-/*      // Create a new Todo List.
-      var list = new Todo.List();
+    },
 
-      // Use the main layout.
-      app.useLayout("main").setViews({
-        // Attach the root content View to the layout.
-        "form": new Todo.Views.Form({
-          collection: list
-        }),
+    settings: function(){
+     app.useLayout("main").setViews({
+      ".app-body": new Game.Views.Settings({
+       model: Game.getInstance(),
+       router: this
+      })
+     }).render();
+    },
 
-        // Attach the stats View into the content View.
-        ".stats": new Todo.Views.Stats({
-          collection: list
-        }),
-
-        // Attach the list View into the content View.
-        ".list": new Todo.Views.List({
-          collection: list
-        })
-      }).render();
-
-      // Fetch the data from localStorage
-      list.fetch();*/
+    play: function(){
+     var game = Game.getInstance();
+     if(game.get("started")){
+       var conf = confirm("Are you sure you want to overwrite your existing game?");
+       if(conf){
+         game.start();
+       } else {
+         alert('no game');
+         this.navigate("#");
+       }
+     } else {
+      game.start();
+     }
     }
+  
   });
 
   return Router;
